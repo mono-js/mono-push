@@ -1,0 +1,36 @@
+{
+  "name": "@terrajs/mono-push",
+  "version": "0.0.3",
+  "description": "Mono Push module",
+  "main": "lib/",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "lint": "eslint lib/**",
+    "test": "npm run lint && nyc ava --verbose --serial test/ && nyc report --reporter=html",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terrajs/mono-push.git"
+  },
+  "nyc": {
+    "include": [
+      "lib/"
+    ]
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@terrajs/mono": "latest",
+    "@terrajs/mono-test-utils": "latest",
+    "ava": "^0.22.0",
+    "codecov": "^2.3.0",
+    "eslint": "^4.7.2",
+    "nyc": "^11.2.1"
+  },
+  "keywords": [
+    "mono",
+    "mono-module"
+  ]
+}
