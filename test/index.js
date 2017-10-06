@@ -8,3 +8,6 @@ const start = require('../lib')
 ** Tests are run in serial
 */
 
+test('', (t) => {
+	t.pass()
+})
