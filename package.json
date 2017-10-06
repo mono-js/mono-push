@@ -23,6 +23,8 @@
   "license": "MIT",
   "devDependencies": {
     "@terrajs/mono": "latest",
+    "@terrajs/mono-io": "^1.0.1",
+    "@terrajs/mono-mongodb": "^2.2.0",
     "@terrajs/mono-test-utils": "latest",
     "ava": "^0.22.0",
     "codecov": "^2.3.0",
