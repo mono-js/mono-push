@@ -1,37 +1,16 @@
-# mono-module-starter
+<h1 align="center"><img src="https://user-images.githubusercontent.com/904724/30934843-1ffda8d8-a3cf-11e7-9c01-dd043e31e89b.png" width="350" alt="Mono Push"/></h1>
 
-Mono module starter for [Mono](https://github.com/terrajs/mono).
+> MongoPush module for [Mono](https://github.com/terrajs/mono)
 
-## Installation
-
-```bash
-git clone --depth 1 git@github.com:terrajs/mono-module-starter.git mono-module-x
-cd mono-module-x/
-npm install
-```
-
-You need also to remove the git history and start a new one:
-
-```bash
-rm -r .git/
-git init
-```
-
-> :warning: When done, remove the section above and edit the section below (replace: `org-x` and `mono-module-x` by your GitHub username/org and module name)
-
-# mono-module-x
-
-[Mono](https://github.com/terrajs/mono) module for X.
-
-[![npm version](https://img.shields.io/npm/v/mono-module-x.svg)](https://www.npmjs.com/package/mono-module-x)
-[![Travis](https://img.shields.io/travis/org-x/mono-module-x/master.svg)](https://travis-ci.org/org-x/mono-module-x)
-[![Coverage](https://img.shields.io/codecov/c/github/org-x/mono-module-x/master.svg)](https://codecov.io/gh/org-x/mono-module-x)
-[![license](https://img.shields.io/github/license/org-x/mono-module-x.svg)](https://github.com/org-x/mono-module-x/blob/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/@terrajs/mono-push.svg)](https://www.npmjs.com/package/@terrajs/mono-push)
+[![Travis](https://img.shields.io/travis/terrajs/mono-push/master.svg)](https://travis-ci.org/terrajs/mono-push)
+[![Coverage](https://img.shields.io/codecov/c/github/terrajs/mono-push/master.svg)](https://codecov.io/gh/terrajs/mono-push.js)
+[![license](https://img.shields.io/github/license/terrajs/mono-push.svg)](https://github.com/terrajs/mono-push/blob/master/LICENSE)
 
 ## Installation
 
 ```bash
-npm install --save mono-module-x
+npm install --save @terrajs/mono-push
 ```
 
 Then, in your configuration file of your Mono application (example: `conf/application.js`):
@@ -39,29 +18,56 @@ Then, in your configuration file of your Mono application (example: `conf/applic
 ```js
 module.exports = {
   mono: {
-    modules: ['mono-module-x']
+    modules: [
+      '@terrajs/mono-mongodb',
+      '@terrajs/mono-push'
+    ]
   }
 }
 ```
 
+mono-push requires [mono-mongodb](https://github.com/terrajs/mono-mongodb), so it must be installed and declared before mono-push because modules are loaded synchronously
+
 ## Configuration
 
-`mono-module-x` will use the `x` property of your configuration (example: `conf/development.js`):
+mono-push will use the `push` property of your configuration (example: `conf/development.js`):
 
 ```js
 module.exports = {
-  x: {
-    /* Your module options */
+  mono: {
+    push: {
+      io: true
+    }
+  }
+}
+```
+
+When using `io: true`, mono-push requires [mono-io](https://github.com/terrajs/mono-io), so it must be installed and declared (example: `conf/application.js`):
+
+```js
+module.exports = {
+  mono: {
+    modules: [
+      '@terrajs/mono-mongodb',
+      '@terrajs/mono-io',
+      '@terrajs/mono-push'
+    ]
   }
 }
 ```
 
 ## Usage
 
-In your `src/` files, you can access `x` like this:
+In your modules files, you can access `send` helper like this:
+
+`send(event: string, query: object = {}, context: object = {})`
+
+Example:
 
 ```js
-const { x } = require('mono-module-x')
+const { send } = require('@terrajs/mono-push')
 
-x.method(...)
+await send('new-push', { userId: '...' }, { message: 'Welcome!' })
 ```
+
+With conf `io: true`, mono-push will emit an event to every socket connected that matches the query
