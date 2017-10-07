@@ -1,6 +1,6 @@
 <h1 align="center"><img src="https://user-images.githubusercontent.com/739984/31306827-f257e8d6-ab57-11e7-89da-a1bc7489a6d8.png" width="350" alt="Mono Push"/></h1>
 
-> MongoPush module for [Mono](https://github.com/terrajs/mono)
+> MonoPush module for [Mono](https://github.com/terrajs/mono)
 
 [![npm version](https://img.shields.io/npm/v/@terrajs/mono-push.svg)](https://www.npmjs.com/package/@terrajs/mono-push)
 [![Travis](https://img.shields.io/travis/terrajs/mono-push/master.svg)](https://travis-ci.org/terrajs/mono-push)
