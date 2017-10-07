@@ -1,4 +1,4 @@
-<h1 align="center"><img src="https://user-images.githubusercontent.com/904724/30934843-1ffda8d8-a3cf-11e7-9c01-dd043e31e89b.png" width="350" alt="Mono Push"/></h1>
+<h1 align="center"><img src="https://user-images.githubusercontent.com/739984/31306827-f257e8d6-ab57-11e7-89da-a1bc7489a6d8.png" width="350" alt="Mono Push"/></h1>
 
 > MongoPush module for [Mono](https://github.com/terrajs/mono)
 
