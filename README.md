@@ -60,7 +60,7 @@ module.exports = {
 
 In your modules files, you can access `send` helper like this:
 
-`send(event: string, query: object = {}, context: object = {})`
+`send(event: string, query: object = {}, payload: object = {})`
 
 Example:
 
