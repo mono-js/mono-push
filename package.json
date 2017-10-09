@@ -34,5 +34,8 @@
   "keywords": [
     "mono",
     "mono-module"
-  ]
+  ],
+  "dependencies": {
+    "socketio-jwt": "^4.5.0"
+  }
 }
