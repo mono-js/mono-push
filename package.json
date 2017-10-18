@@ -1,5 +1,5 @@
 {
-  "name": "@terrajs/mono-push",
+  "name": "mono-push",
   "version": "0.3.2",
   "description": "Mono Push module",
   "main": "lib/",
@@ -23,12 +23,12 @@
   "license": "MIT",
   "devDependencies": {
     "@terrajs/mono": "latest",
-    "@terrajs/mono-io": "^1.0.1",
-    "@terrajs/mono-mongodb": "^2.2.0",
-    "@terrajs/mono-test-utils": "latest",
+    "mono-io": "^1.1.2",
+    "mono-mongodb": "^2.2.0",
+    "mono-test-utils": "latest",
     "ava": "^0.22.0",
-    "codecov": "^2.3.0",
-    "eslint": "^4.7.2",
+    "codecov": "^2.3.1",
+    "eslint": "^4.9.0",
     "nyc": "^11.2.1"
   },
   "keywords": [
