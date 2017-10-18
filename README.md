@@ -69,11 +69,33 @@ Example:
 ```js
 const { send } = require('mono-push')
 
-await send('new-push', { userId: '...' }, { message: 'Welcome!' })
+await send('my-event', { userId: '...' }, { message: 'Welcome!' })
 ```
 
 With conf `io: true`, mono-push will emit an event to every socket connected that matches the query.
 
 On client-side, the user must connect with the [socket.io-client](https://github.com/socketio/socket.io-client):
 
-> TODO
+```js
+import io from 'socket.io-client'
+
+const socket = io('http://localhost:8000/push')
+
+const token = '...' // JWT generate by await jwt.generateJWT(session), see Mono
+
+socket.on('connect', () => {
+  socket
+    .emit('authenticate', { token })
+    .on('authenticated', function () {
+      console.log('Authenticated')
+    })
+    .on('unauthorized', function (msg) {
+      console.log('Unauthorized')
+    })
+
+  // Listen on push events
+  socket.on('my-event', (event) {
+    // event is { message: 'Welcome!' }
+  })
+})
+```
