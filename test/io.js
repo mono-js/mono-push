@@ -24,7 +24,7 @@ test('Start mono server', async (t) => {
 })
 
 test('GET /socket.io/socket.io.js should exists', async (t) => {
-	const { statusCode } = await $get('/socket.io/socket.io.js')
+	const { statusCode, body } = await $get('/socket.io/socket.io.js')
 
 	t.is(statusCode, 200)
 })
@@ -41,7 +41,7 @@ test('Add users', async (t) => {
 test('Create socket.io connection for every user', async (t) => {
 	const promises = Object.keys(users).map(async (key) => {
 		const socket = sockets[key] = io(url('/push'), { forceNew: true })
-		
+
 		await waitForEvent(socket, 'connect')
 	})
 	await Promise.all(promises)
@@ -60,7 +60,7 @@ test('Authenticate users', async (t) => {
 	stdMocks.use()
 	const promises = Object.keys(users).map(async (key) => {
 		sockets[key].emit('authenticate', { token: users[key].token })
-		
+
 		await waitForEvent(sockets[key], 'authenticated')
 	})
 	await Promise.all(promises)
