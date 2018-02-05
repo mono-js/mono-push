@@ -40,7 +40,7 @@ mono-push will use the `push` property of your configuration:
   - Type: `string`
   - Default: `'mono-pushes'`
 
-Example of activating `socket.io` and writing events in `pushs` collection (`conf/application.js`):
+Example of activating `socket.io` and writing events in `pushes` collection (`conf/application.js`):
 
 ```js
 module.exports = {
