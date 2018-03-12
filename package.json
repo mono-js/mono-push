@@ -31,7 +31,7 @@
     "mono-mongodb": "2.3.2",
     "mono-test-utils": "1.2.3",
     "nyc": "11.4.1",
-    "socket.io-client": "2.0.3",
+    "socket.io-client": "2.0.4",
     "std-mocks": "1.0.1"
   },
   "keywords": [
