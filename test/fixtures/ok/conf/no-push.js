@@ -10,7 +10,8 @@ module.exports = {
 			join(__dirname, '../../../..')
 		],
 		mongodb: {
-			url: 'mongodb://localhost:27017/mono-push-test-no-push',
+			url: 'mongodb://localhost:27017',
+			dbName: 'mono-push-test-no-push',
 			dropDatabase: true
 		}
 	}

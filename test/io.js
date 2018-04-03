@@ -24,7 +24,7 @@ test('Start mono server', async (t) => {
 })
 
 test('GET /socket.io/socket.io.js should exists', async (t) => {
-	const { statusCode, body } = await $get('/socket.io/socket.io.js')
+	const { statusCode } = await $get('/socket.io/socket.io.js')
 
 	t.is(statusCode, 200)
 })
@@ -91,7 +91,7 @@ test('Send push to admin users', async (t) => {
 	t.is(adminEvents.admin2[0].message, 'Welcome!')
 
 	const error = await t.throws(usersEventsPromise)
-	t.true(error.message.includes('Timeout'))
+	t.true(error.message.includes('Wait for event timeout (2000ms)'))
 })
 
 test('Send push to all users', async (t) => {
