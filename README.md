@@ -62,7 +62,7 @@ module.exports = {
 
 In your files, you can access the `push` and `pushAll` methods like this:
 
-### Push an event to authenticated user matching a query
+### Push an event to authenticated user(s) matching a query
 
 `push(event: string, query: object = {}, payload: object = {})`
 
