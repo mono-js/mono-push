@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "lint": "eslint lib/**",
-    "test": "npm run lint && nyc ava --verbose --serial test/ && nyc report --reporter=html",
+    "test": "npm run lint && nyc ava --verbose --serial --fail-fast test/ && nyc report --reporter=html",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "repository": {
@@ -22,17 +22,17 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@terrajs/mono": "0.9.1",
-    "ava": "0.25.0",
-    "codecov": "3.0.0",
-    "eslint": "4.18.2",
-    "mongodb-utils": "1.1.6",
-    "mono-io": "1.1.4",
-    "mono-mongodb": "2.4.1",
-    "mono-test-utils": "1.2.3",
-    "nyc": "11.4.1",
-    "socket.io-client": "2.0.4",
-    "std-mocks": "1.0.1"
+    "@terrajs/mono": "^0.9.1",
+    "ava": "^0.25.0",
+    "codecov": "^3.0.0",
+    "eslint": "^4.19.1",
+    "mongodb-utils": "^1.1.6",
+    "mono-io": "^1.1.4",
+    "mono-mongodb": "^2.4.1",
+    "mono-test-utils": "^1.2.3",
+    "nyc": "^11.7.1",
+    "socket.io-client": "^2.1.0",
+    "std-mocks": "^1.0.1"
   },
   "keywords": [
     "mono",
