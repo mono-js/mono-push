@@ -69,7 +69,7 @@ test('Authenticate users', async (t) => {
 	const { stdout } = stdMocks.flush()
 
 	t.is(stdout.length, 4)
-	t.true(stdout[0].includes('[mono-push:mono-push] User connected'))
+	t.true(stdout[0].includes('[mono-push:mono-push] User authenticated'))
 })
 
 test('Send push to admin users', async (t) => {
@@ -91,26 +91,50 @@ test('Send push to admin users', async (t) => {
 	t.is(adminEvents.admin2[0].message, 'Welcome!')
 
 	const error = await t.throws(usersEventsPromise)
-	t.true(error.message.includes('Wait for event timeout (2000ms)'))
+	t.true(error.message.includes('timeout'))
 })
 
 test('Send push to all users', async (t) => {
-	const { send } = require('../')
+	const { push } = require('../')
 
 	const eventsPromise = asyncObject({
-		admin1: waitForEvent(sockets.admin1, 'message'),
-		admin2: waitForEvent(sockets.admin2, 'message'),
-		user1: waitForEvent(sockets.user1, 'message'),
-		user2: waitForEvent(sockets.user2, 'message')
+		admin1: waitForEvent(sockets.admin1, 'message', 2000),
+		admin2: waitForEvent(sockets.admin2, 'message', 2000),
+		user1: waitForEvent(sockets.user1, 'message', 2000),
+		user2: waitForEvent(sockets.user2, 'message', 2000)
 	})
 
-	await send('message')
+	await push('message')
 	const events = await eventsPromise
 
 	t.deepEqual(events.admin1[0], {})
 	t.deepEqual(events.admin2[0], {})
 	t.deepEqual(events.user1[0], {})
 	t.deepEqual(events.user2[0], {})
+})
+
+test('Send push to all sockets (pushAll)', async (t) => {
+	const { pushAll } = require('../')
+
+	sockets.guest = io(url('/push'), { forceNew: true })
+	await waitForEvent(sockets.guest, 'connect')
+
+	const eventsPromise = asyncObject({
+		admin1: waitForEvent(sockets.admin1, 'message', 2000),
+		admin2: waitForEvent(sockets.admin2, 'message', 2000),
+		user1: waitForEvent(sockets.user1, 'message', 2000),
+		user2: waitForEvent(sockets.user2, 'message', 2000),
+		guest: waitForEvent(sockets.guest, 'message', 2000)
+	})
+
+	await pushAll('message')
+	const events = await eventsPromise
+
+	t.deepEqual(events.admin1[0], {})
+	t.deepEqual(events.admin2[0], {})
+	t.deepEqual(events.user1[0], {})
+	t.deepEqual(events.user2[0], {})
+	t.deepEqual(events.guest[0], {})
 })
 
 test('Stop mono server', async (t) => {
