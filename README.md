@@ -60,16 +60,26 @@ module.exports = {
 
 ## Usage
 
-In your files, you can access `send` helper like this:
+In your files, you can access the `push` and `pushAll` methods like this:
 
-`send(event: string, query: object = {}, payload: object = {})`
+### Push an event to authenticated user matching a query
 
-Example:
+`push(event: string, query: object = {}, payload: object = {})`
+
+### Push an event to all connected sockets
+
+`pushAll(event: string, payload: object = {})`
+
+## Example
 
 ```js
-const { send } = require('mono-push')
+const { push, pushAll } = require('mono-push')
 
-await send('my-event', { userId: '...' }, { message: 'Welcome!' })
+await push('notification', { userId: '...' }, { type: 'email' })
+// userId will be matched against authenticated users
+
+await pushAll('message', { message: 'Welcome!' })
+// Send it to all connected devices
 ```
 
 With conf `io: true`, mono-push will emit an event to every socket connected that matches the query.
