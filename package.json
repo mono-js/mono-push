@@ -1,6 +1,6 @@
 {
   "name": "mono-push",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Mono Push module",
   "main": "lib/",
   "files": [
