@@ -22,15 +22,15 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@terrajs/mono": "^0.9.1",
+    "mono-core": "1.0.0",
     "ava": "^0.25.0",
     "codecov": "^3.0.0",
-    "eslint": "^4.19.1",
+    "eslint": "^5.4.0",
     "mongodb-utils": "^1.1.6",
     "mono-io": "^1.1.4",
     "mono-mongodb": "^2.4.1",
     "mono-test-utils": "^1.2.3",
-    "nyc": "^11.7.1",
+    "nyc": "^12.0.2",
     "socket.io-client": "^2.1.0",
     "std-mocks": "^1.0.1"
   },
