@@ -3,8 +3,8 @@ const test = require('ava')
 const { join } = require('path')
 const stdMocks = require('std-mocks')
 const io = require('socket.io-client')
+const { waitFor, waitForEvent, asyncObject } = require('mono-utils')
 const { start, stop, $get, $post, url } = require('mono-test-utils')
-const { waitFor, waitForEvent, asyncObject } = require('@terrajs/mono/utils')
 
 /*
 ** Tests are run in serial

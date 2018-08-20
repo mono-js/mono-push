@@ -1,6 +1,6 @@
 const Joi = require('joi')
 const mongoUtils = require('mongodb-utils')
-const { jwt } = require('@terrajs/mono')
+const { jwt } = require('mono-core')
 const { db } = require('mono-mongodb')
 
 const collection = mongoUtils(db.collection('users'))
